@@ -1,0 +1,32 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.AppContianer {
+  width:100vw;
+  min-height:100vh;
+  margin: 0 auto;
+  padding-top: 20px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+}
+
+.dish-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 10px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.dish-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+

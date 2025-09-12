@@ -1,0 +1,200 @@
+.DishCard {
+  width: 328px;
+  height: 115px;
+  gap: 26px;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: white;
+  margin:10px;
+}
+
+.DishDetails {
+  width: 202px;
+  height: 94px;
+  gap: 12px;
+  opacity: 1;
+}
+
+.TitleContainer {
+  height: 20px;
+  gap: 5px;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.DishName {
+  height: 19px;
+  opacity: 1;
+  font-family: Open Sans;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #1c1c1c;
+}
+.NonVegContainer {
+  width: 7px;
+  height: 7px;
+  gap: 10px;
+  opacity: 1;
+  border-radius: 4px;
+  border-width: 1px;
+  padding: 4px;
+  background: #ffffff;
+  border: 1px solid #e2574c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.VegContainer {
+  width: 7px;
+  height: 7px;
+  gap: 10px;
+  opacity: 1;
+  border-radius: 4px;
+  border-width: 1px;
+  padding: 4px;
+  background: #ffffff;
+  border: 1px solid green;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.VegType {
+  width: 6px;
+  height: 6px;
+  opacity: 1;
+  background-color: green;
+}
+
+.NonVegType {
+  width: 6px;
+  height: 6px;
+  opacity: 1;
+  background-color: #e2574c;
+}
+
+.DishDescription {
+  width: 202px;
+  height: 32px;
+  top: 32px;
+  font-family: Open Sans;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 15px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  opacity: 1;
+  font-family: Open Sans;
+  color: #b5b4b1;
+}
+
+.spanEl {
+  font-family: Open Sans;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #4a4947;
+}
+
+.IngredientContainer {
+  width: 85px;
+  height: 20px;
+  gap: 4px;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Ingredient {
+  width: 63px;
+  height: 16px;
+  font-size: 12px;
+  gap: 2px;
+  opacity: 1;
+  font-family: Open Sans;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #ff8800;
+  margin-bottom: 6px;
+}
+
+.IngredientIcon {
+  width: 18px;
+  height: 18px;
+  opacity: 1;
+}
+
+
+
+.horline {
+  border: none; /* remove default styling */
+  border-top: 0.5px solid #b5b4b1; /* light grey thin line */
+  margin: 8px 0;
+  width:95%;
+}
+
+.DishImage {
+  width: 100px;
+  height: 100%;
+  opacity: 1;
+  border-radius: 12px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  
+  margin-bottom: 8px;
+  display: block;
+}
+
+.ImageBtn {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+
+  
+}
+
+
+.img-wrapper {
+  position: relative;
+}
+
+.addBtn {
+  position: absolute;
+  bottom: -20px;   /* pushes it below image slightly */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  border: 1px solid #4caf50;
+  color: #4caf50;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 6px 14px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: 0.2s;
+  width: 70px;
+}
+
+.addBtn:hover {
+  background-color: #4caf50;
+  color: white;
+}
+
+
+
+
