@@ -1,3 +1,4 @@
+import React from "react";
 import {
   FiltersContainer,
   SearchContainer,
@@ -9,6 +10,10 @@ import {
   CategoryBtn,
   SelectedDataContainer,
   SelectedData,
+  ToggleContainer,
+  ToggleBtnContainer,
+  ToggleButton,
+  Circle,
 } from "./styledComponents";
 
 const CategoriesList = [
@@ -18,42 +23,101 @@ const CategoriesList = [
   { id: 4, category: "Sides" },
 ];
 
-function Filters(props) {
-  const {
-    onCategoryChange,
-    activeCategory,
-    searchTerm,
-    onSetSearchTerm,
-    onSearchClick,
-  } = props;
+function Filters({
+  activeCategory,
+  onCategoryChange,
+  searchTerm,
+  onSetSearchTerm,
+  onSearchClick,
+  selectedDishes,
+  vegOnly,
+  onVegOnly,
+}) {
+  const selectedCategory = CategoriesList.find(
+    (each) => each.id === activeCategory
+  );
+
+  const selectedCategoryCount = selectedDishes.filter(
+    (each) => each.categoryId === selectedCategory?.id
+  ).length;
+
+  // Veg toggle clicked
+  const handleVegClick = () => {
+    if (vegOnly === true) {
+      onVegOnly(null); // turn off Veg
+    } else {
+      onVegOnly(true); // turn on Veg
+    }
+  };
+
+  // Non-Veg toggle clicked
+  const handleNonVegClick = () => {
+    if (vegOnly === false) {
+      onVegOnly(null); // turn off Non-Veg
+    } else {
+      onVegOnly(false); // turn on Non-Veg
+    }
+  };
 
   return (
     <FiltersContainer>
+      {/* Search Bar */}
       <SearchContainer>
         <SearhInputContainer>
           <LessThanIcon />
           <SearchInput
             type="text"
             placeholder="Search dish for your party..."
-            onChange={(event) => onSetSearchTerm(event.target.value)}
             value={searchTerm}
+            onChange={(e) => onSetSearchTerm(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                onSearchClick(); // trigger search on Enter key
+              }
+            }}
           />
         </SearhInputContainer>
-        <SearchIcon onClick={onSearchClick} />
+        <SearchIcon onClick={onSearchClick} /> {/* trigger search on click */}
       </SearchContainer>
+
+      {/* Category Buttons */}
       <CategoriesContainer>
         {CategoriesList.map((each) => (
           <CategoryBtn
             key={each.id}
-            onClick={() => onCategoryChange(each.id)}
             $isactive={activeCategory === each.id}
+            onClick={() => onCategoryChange(each.id)}
           >
-            {each.category} 0
+            {each.category}
           </CategoryBtn>
         ))}
       </CategoriesContainer>
+
+      {/* Selected Dish Count & Veg/Non-Veg Toggles */}
       <SelectedDataContainer>
-        <SelectedData>Main Courses Selected (0)</SelectedData>
+        <SelectedData>
+          {selectedCategory?.category} Selected ({selectedCategoryCount})
+        </SelectedData>
+
+        <ToggleContainer>
+          <ToggleBtnContainer>
+            <ToggleButton
+              $active={vegOnly === true}
+              onClick={handleVegClick}
+            >
+              <Circle type="veg" />
+            </ToggleButton>
+          </ToggleBtnContainer>
+
+          <ToggleBtnContainer>
+            <ToggleButton
+              $active={vegOnly === false}
+              onClick={handleNonVegClick}
+            >
+              <Circle type="nonveg" />
+            </ToggleButton>
+          </ToggleBtnContainer>
+        </ToggleContainer>
       </SelectedDataContainer>
     </FiltersContainer>
   );

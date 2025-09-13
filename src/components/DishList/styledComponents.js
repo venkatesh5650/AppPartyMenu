@@ -7,10 +7,16 @@ export const DishesViewContainer = styled.div`
   flex-direction: column; /* stack vertically */
   justify-content: flex-start;
   align-items: center;
-  padding: 7px;
+  padding: 10px;
   background-color: white;
   gap: 0px; /* spacing between search and categories */
+
+  @media(min-width:968px){
+  padding:40px;
+  }
 `;
+
+
 
 export const AllDishesContainer = styled.div`
   // width: 328px;
@@ -22,5 +28,5 @@ export const AllDishesContainer = styled.div`
   background-color: white;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
 `;

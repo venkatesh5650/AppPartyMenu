@@ -1,11 +1,8 @@
 import { useState, useEffect } from "react";
-
-import DishesList from "./components/DishList";
 import Filters from "./components/Filters";
-
+import DishesList from "./components/DishList";
+import IngredientModal from "./components/IngredientModal";
 import { AllDishesList } from "./data/MockDishes";
-
-import "./App.css";
 
 const CategoriesList = [
   { id: 1, category: "Starter" },
@@ -15,53 +12,62 @@ const CategoriesList = [
 ];
 
 function App() {
-  // 1. Track which category is selected
   const [selectedCategory, setCategory] = useState(CategoriesList[0].id);
-
-  // 2. Track the search input text
-  const [searchTerm, setSearchTerm] = useState("");
-
-  // // 3. Track Veg filter (true = Veg only)
-  // const [vegOnly, setVegOnly] = useState(false);
-
-  // // 4. Track the IDs of dishes added to the party menu
-  // const [selectedDishes, setSelectedDishes] = useState([]);
-
-  // // 5. Manage ingredient modal state
-
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [currentDish, setCurrentDish] = useState(null);
-
+  const [searchTerm, setSearchTerm] = useState(""); // input value
+  const [searchedTerm, setSearchedTerm] = useState(""); // search applied on click
+  const [selectedDishes, setSelectedDishes] = useState([]);
+  const [vegOnly, setVegOnly] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentDish, setCurrentDish] = useState(null);
   const [allDishes, setAllDishes] = useState(AllDishesList);
 
-  const onCategoryChange = (id) => {
-    const filteredCategoryDishes = AllDishesList.filter(
-      (eachDish) => eachDish.categoryId === id
-    );
-    setCategory(id);
-    setAllDishes(filteredCategoryDishes);
+  // Veg/Non-Veg toggle handler
+  const onVegOnly = (value) => setVegOnly(value);
+
+  // Ingredient modal
+  const onViewIngredients = (dish) => {
+    setCurrentDish(dish);
+    setIsModalOpen(true);
   };
 
+  // Add/remove dish
+  const onAddDish = (dish) => setSelectedDishes((prev) => [...prev, dish]);
+  const onRemoveDish = (dish) =>
+    setSelectedDishes((prev) => prev.filter((d) => d.id !== dish.id));
+
+  const onCategoryChange = (id) => setCategory(id);
+  const onSetSearchTerm = (value) => setSearchTerm(value);
+
+  // Update searchedTerm only when search icon is clicked
   const onSearchClick = () => {
-    const searchedDishes =
-      searchTerm === ""
-        ? AllDishesList
-        : AllDishesList.filter((each) =>
-            each.name.toLowerCase().includes(searchTerm.toLowerCase())
-          );
-    setAllDishes(searchedDishes);
-    setSearchTerm("");
+    setSearchedTerm(searchTerm);
   };
 
-  const onSetSearchTerm = (searchValue) => {
-    setSearchTerm(searchValue);
-  };
-
-  console.log(selectedCategory);
-
+  // Filter dishes whenever category, vegOnly, or searchedTerm changes
   useEffect(() => {
-    console.log("Selected category changed:", selectedCategory);
-  }, [selectedCategory]);
+    let filtered = AllDishesList;
+
+    // Category filter
+    if (selectedCategory) {
+      filtered = filtered.filter((dish) => dish.categoryId === selectedCategory);
+    }
+
+    // Veg/Non-Veg filter
+    if (vegOnly === true) {
+      filtered = filtered.filter((dish) => dish.type === "VEG");
+    } else if (vegOnly === false) {
+      filtered = filtered.filter((dish) => dish.type === "NON-VEG");
+    }
+
+    // Search filter applied only when searchedTerm changes
+    if (searchedTerm.trim() !== "") {
+      filtered = filtered.filter((dish) =>
+        dish.name.toLowerCase().includes(searchedTerm.toLowerCase())
+      );
+    }
+
+    setAllDishes(filtered);
+  }, [selectedCategory, vegOnly, searchedTerm]);
 
   return (
     <div className="AppContainer">
@@ -71,8 +77,26 @@ function App() {
         searchTerm={searchTerm}
         onSetSearchTerm={onSetSearchTerm}
         onSearchClick={onSearchClick}
+        selectedDishes={selectedDishes}
+        vegOnly={vegOnly}
+        onVegOnly={onVegOnly}
       />
-      <DishesList DishesList={allDishes} />
+
+      <DishesList
+        DishesList={allDishes}
+        onAddDish={onAddDish}
+        onRemoveDish={onRemoveDish}
+        selectedDishes={selectedDishes}
+        onViewIngredients={onViewIngredients}
+      />
+
+      {isModalOpen && currentDish && (
+        <IngredientModal
+          ingredientDetails={currentDish.ingredients}
+          dishName={currentDish.name}
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
     </div>
   );
 }

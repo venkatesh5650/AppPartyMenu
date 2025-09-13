@@ -7,7 +7,21 @@
   align-items: center;
   justify-content: space-around;
   background-color: white;
-  margin:10px;
+  margin: 10px;
+}
+
+@media (min-width: 968px) {
+  .DishCard {
+    width: 400px;
+    height: 160px;
+    gap: 26px;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: white;
+    margin: 10px;
+  }
 }
 
 .DishDetails {
@@ -105,6 +119,11 @@
   letter-spacing: 0%;
   color: #4a4947;
 }
+.ReadMoreBtn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
 
 .IngredientContainer {
   width: 85px;
@@ -116,7 +135,7 @@
   justify-content: center;
 }
 
-.Ingredient {
+.IngredientBtn {
   width: 63px;
   height: 16px;
   font-size: 12px;
@@ -129,7 +148,9 @@
   line-height: 100%;
   letter-spacing: 0%;
   color: #ff8800;
-  margin-bottom: 6px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
 
 .IngredientIcon {
@@ -138,13 +159,11 @@
   opacity: 1;
 }
 
-
-
 .horline {
   border: none; /* remove default styling */
   border-top: 0.5px solid #b5b4b1; /* light grey thin line */
   margin: 8px 0;
-  width:95%;
+  width: 95%;
 }
 
 .DishImage {
@@ -155,7 +174,7 @@
   margin: 0;
   padding: 0;
   width: 100%;
-  
+
   margin-bottom: 8px;
   display: block;
 }
@@ -164,10 +183,7 @@
   /* display: flex;
   flex-direction: column;
   justify-content: center; */
-
-  
 }
-
 
 .img-wrapper {
   position: relative;
@@ -175,7 +191,7 @@
 
 .addBtn {
   position: absolute;
-  bottom: -20px;   /* pushes it below image slightly */
+  bottom: -20px; /* pushes it below image slightly */
   left: 50%;
   transform: translateX(-50%);
   background-color: #fff;
@@ -185,7 +201,7 @@
   border-radius: 8px;
   padding: 6px 14px;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   transition: 0.2s;
   width: 70px;
 }
@@ -195,6 +211,118 @@
   color: white;
 }
 
+.removeBtn {
+  position: absolute;
+  bottom: -20px; /* pushes it below image slightly */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  border: 1px solid #ff941a;
+  color: #ff941a;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 6px 14px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: 0.2s;
+  width: 70px;
+  text-align: center;
+}
+
+.removeBtn:hover {
+  background-color: #ff941a;
+  color: white;
+}
+/* Overlay */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center vertically */
+  z-index: 999;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Center Modal */
+.centerModal {
+  background-color: white;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh; /* keep it smaller than screen */
+  border-radius: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Optional fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Modal header */
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modalHeader h2 {
+  font-size: 1.2rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+/* Dish image in modal */
+.modalImage {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Buttons inside modal */
+.modalButtons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+}
 
 
+.modalAddBtn,
+.modalRemoveBtn {
+  position: static; /* not absolute */
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
 
+.modalAddBtn {
+  background-color: #28a745;
+  color: white;
+}
+
+.modalRemoveBtn {
+  background-color: orange;
+  color: white;
+}
