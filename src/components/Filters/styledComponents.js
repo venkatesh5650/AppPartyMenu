@@ -73,10 +73,6 @@ export const CategoryBtn = styled.button`
   transition: all 0.2s ease;
   font-weight: 500;
   color: ${(props) => (props.$isactive ? "white" : "#1C1C1C")};
-
-  &:hover {
-    background-color: #f2f2f2;
-  }
 `;
 
 export const SelectedDataContainer = styled.div`
@@ -92,8 +88,8 @@ export const SelectedDataContainer = styled.div`
   justify-content: space-around;
   align-items: center;
   text-align: center;
-  padding-left:20px;
-  padding-right:10px;
+  padding-left: 20px;
+  padding-right: 10px;
 `;
 
 export const SelectedData = styled.p`
@@ -109,8 +105,6 @@ export const SelectedData = styled.p`
   leading-trim: NONE;
   line-height: 100%;
   letter-spacing: 0%;
-
-
 `;
 
 // export default FiltersContainer = styled.div`

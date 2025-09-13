@@ -8,6 +8,18 @@
   justify-content: space-around;
   background-color: white;
   margin: 10px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+  padding:10px;
+}
+
+/* Hover effect */
+.DishCard:hover {
+  transform: translateY(-8px); /* moves card up */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* deeper shadow */
 }
 
 @media (min-width: 968px) {
@@ -305,7 +317,6 @@
   justify-content: flex-start;
   gap: 10px;
 }
-
 
 .modalAddBtn,
 .modalRemoveBtn {

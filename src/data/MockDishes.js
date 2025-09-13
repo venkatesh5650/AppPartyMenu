@@ -151,7 +151,7 @@ export const AllDishesList = [
     description:
       "Eggs boiled, spiced, and shallow fried.Eggs boiled, spiced, and shallow fried..",
     image:
-      "https://media.istockphoto.com/id/1089229682/photo/fried-hot-boiled-egg-masala-is-a-popular-healthy-breakfast-or-starter-menu-from-india-with.jpg?s=612x612&w=0&k=20&c=_v24ZsgLLukcWWDY5Ntzu6TNB7OVvfTRis27z-W0Zns=",
+      "https://media.istockphoto.com/id/1292583775/photo/anda-masala-or-egg-curry-is-popular-indian-spicy-food-served-in-a-ceramic-bowl-over-rustic.jpg?s=612x612&w=0&k=20&c=WRc9xcp65Apmb69_MPNsYrBaqkJwCbugz-6FPczu3GY=",
     category: {
       id: 1,
       name: "South Indian",

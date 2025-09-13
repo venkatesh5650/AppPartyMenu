@@ -79,8 +79,6 @@ function DishCard(props) {
         </div>
       </div>
 
-      <hr className="horline" />
-
       {/* Centered Read More Modal */}
       {showReadMore && (
         <div className="modalOverlay" onClick={() => setShowReadMore(false)}>
